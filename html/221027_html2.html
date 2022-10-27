@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- ▲지금 내가 작성하는 것이 html 문서임을 나타내는 코드 -->
+<html lang="ko"> <!-- lang="ko": 파일 안에 내용이 한국어로 적힘을 명시-->
+    <head>
+        <title>문서 제목(이름)</title>
+        <meta charset="UTF-8"> <!--이 파일의 내용을 한글로 나타내라는 명령어-->
+    </head>
+    <body>
+        <h1>h1</h1> <!-- 제목태그, 블록요소-->
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <h4>h4</h4>
+        <h5>h5</h5>
+        <h6>h6</h6>
+
+        <p>
+            p
+        </p> <!--문단태그(어떠한 문단을 만들 때 사용, 내용 묶기)-->
+
+        <img src="진돗개.jpg"> <!-- src: 이미지의 경로-->
+        <img src="./진돗개.jpg"> <!--상대경로-->
+        <img src="C:\Users\SBAUser\Desktop\github\SeSAC_1YS_Web\html\진돗개.jpg"> <!--절대경로,live server에서는 나타나지 않음-->
+        <br>
+        <img src="진돗개.jpg" width="100" height="70" title="진돗개"> <!-- title속성은 마우스를 대면 나타남-->
+        <img src="C:\Users\SBAUser\Desktop\github\SeSAC_1YS_Web\html\진돗개.jpg" width="100" height="70" alt="진돗개2"> <!--alt속성은 img가 존재하지 않아 다르게 보일 때(깨져보일 때) 나타남-->
+        <br>
+        <a href="http:///naver.com">속성 사용 안함</a> <!--하이퍼링크를 걸어주는 태그-->
+        <a href="http:///naver.com" target="_self">self 속성사용</a> <!--target속성 사용, 기본값은 "_self": 클릭 시 현재페이지에서 주소가 열림-->
+        <a href="http:///naver.com" target="_blank">blank속성 사용</a> <!--"_blank" 클릭 시 다른페이지에서 주소 열림-->
+
+        <ul> <!--순서가 없는 태그-->
+            <li>1</li> <!--목록태그-->
+            <li>2</li>
+        </ul>
+        <ol type="I" start="2" reversed> <!-- 순서가 있는 태그, type속성 사용, start속성: 순서의 시작점 설정-->
+            <li>1</li>
+            <li>2</li> 
+        </ol>
+    </body>
+</html>
