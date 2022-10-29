@@ -5,14 +5,11 @@
             #circle1 {background-color: aqua;}
             #circle2 {background-color:aquamarine;  position:relative; left:70px; bottom:65px;}
             #circle3 {background-color:blue; position:absolute; left:45px; top:40px;}
-            #circle4 {background-color:rgb(235, 79, 79); position:absolute; left:55px; bottom:10px;}
-            #circle5 {background-color:aqua; position:absolute; left:55px; bottom:10px; z-index: 2;}
-            
-            .circle6 {width:35px; height: 35px; border-radius: 50px; background-color: white; position:fixed; left:30px; top:15px;}
-            .circle7 {width:20px; height: 20px; border-radius: 50px; background-color: black; position:relative; left:23px; bottom:190px; }
-
-            img {position:relative; bottom:250px; z-index: 1;}
-
+            #circle4 {background-color:rgb(235, 79, 79); position:absolute; left:55px; bottom:10px; z-index:12;}
+            #circle5 {background-color:aqua; position:absolute; left:55px; bottom:10px; z-index:-1;}
+            #circle6 {width:35px; height: 35px; border-radius: 50px; background-color: white; position:relative; bottom:180px; left:15px;}
+            #circle7 {width:20px; height: 20px; border-radius: 50px; background-color: black; position:relative; top:3px;}
+            img {position:relative; bottom:240px; z-index:10;}
         </style>
     </head>
 
@@ -25,9 +22,9 @@
                 </div>
             </div>
         </div>
-        <p class="circle6">
-            <p class="circle7"></p>
-        </p>
+        <div id="circle6">
+            <div id="circle7"></div>
+        </div>
         <img src="잔디.png" width="350px">
     </body>
 </html>

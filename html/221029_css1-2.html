@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <style>
+            #div2 {background-color:yellow;}
+            #div2 .apple { text-decoration: line-through;}
+            #div2 > .apple {border:3px brown dashed; background-color: orange;}
+            .apple + span {font-weight: bold; color:orange;}
+            .apple ~ p {background-color: black; color: white;}
+        </style>
+    </head>
+
+    <body>
+        <div id="div2">
+            <p class="apple">1</p>
+            <p class="apple">2</p>
+            <div>
+                <p class="apple">3</p>
+            </div>
+            <p class="apple">4</p>
+        </div>
+        <p class="apple">5</p>
+        <span>6</span><br>
+        <p>7</p>
+        <p>8</p>
+    </body>
+</html>
