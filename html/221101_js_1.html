@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <script>
+            // alert('hi');
+            // console.log('hello');
+            var a;
+            console.log(a);
+            var a =1;
+            console.log(a);
+            a = 2;
+            console.log(a);
+
+            let b;
+            console.log(b);
+            b =1;
+
+            console.log(a+b);
+            console.log(a+'반갑습니다.');
+
+            console.log(typeof('문자'));
+            console.log(typeof(245));
+            console.log(typeof(function() { } ));
+            console.log(typeof(true));
+            console.log(typeof({}));
+            console.log(typeof([]));
+            console.log(typeof(NaN));
+            console.log(typeof(null));
+
+            // function sesac() {
+            //     console.log("sesac hi!");
+            // }
+            // sesac();
+            
+            // function sesac2(abc, test, a) {
+            //     alert(abc+test+test2+" hello");
+            // }
+            // sesac2("홍","","길동");
+            // sesac2("용","사","안");
+            // sesac2(a);
+
+            //
+
+            function init() {
+                console.log("init");
+            }
+            function parameter1(a) {
+                console.log(a);
+            }
+            function parameter2(a,b) {
+                console.log(a+ " " +b);
+            }
+            function parameter3(a,b,c) {
+                console.log("a: " + a);
+                console.log("b: " + b);
+                console.log("c: " + c);
+            }
+
+            init(); //기본 형태 실행
+            parameter1(); //parameter을 받음에도 전달하지 않기
+            parameter1(10); //parameter 1개 전달
+            parameter2(5,3);
+            parameter3(1,2,3);
+            var variable="hi";
+            parameter3(variable,variable,variable);
+            parameter3(variable,variable);
+            parameter3(variable);
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+</html>

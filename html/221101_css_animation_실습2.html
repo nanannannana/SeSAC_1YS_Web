@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/style.css">
+
+        <style>
+            /* 태양 움직임 */
+            .sun {
+                animation-name:sun;
+                animation-duration: 20s;
+                animation-iteration-count: 5;
+                transform-origin: center 600px;  /* transform의 변형 기준점을 지정하는 속성 */
+                animation-timing-function: linear;
+            }
+            @keyframes sun {
+                0% {
+                transform: rotate(-90deg);
+                opacity:0;
+                }
+                25% {
+                transform: rotate(0deg);
+                opacity: 1;
+                }
+                50% {
+                    transform:rotate(90deg);
+                    opacity:0;
+                }
+                100% {
+                transform: rotate(270deg);
+                opacity: 0;
+                }
+            }
+
+            /* 달 움직임 */
+            .moon {
+                animation-name:moon;
+                animation-duration: 20s;
+                animation-iteration-count: 5;
+                transform-origin: center 600px;
+                animation-timing-function: linear;
+                
+            }
+            @keyframes moon {
+                0%{
+                    transform:rotate(-90deg);
+                    opacity: 0;
+                }
+                25%{
+                    transform:rotate(-180deg);
+                    opacity: 0;
+                }
+                50% {
+                    transform:rotate(-270deg);
+                    opacity: 0;
+                }
+                75% {
+                    transform: rotate(-360deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: rotate(-450deg);
+                    opacity: 0;
+                }
+            }
+
+            /* 구름 움직임 */
+            .cloud_1 {
+                animation-name:clould;
+                animation-duration: 20s;
+                animation-iteration-count: 5;
+                animation-timing-function:linear;
+            }
+            .cloud_2 {
+                animation-name:clould;
+                animation-duration: 15s;
+                animation-iteration-count: 5;
+                animation-timing-function:linear;
+            }
+            @keyframes clould {
+                0% {left:0px; opacity: 0;}
+                25% {left:410px; opacity:1;}
+                50% {left:820px; opacity:0.5;}
+                75% {left:410px; opacity:1;}
+                100%{left:0px; opacity:0;}
+            }
+
+            /* 배경색 변화 */
+            body {
+                animation-name: color;
+                animation-duration: 20s;
+                animation-iteration-count: 5;
+                animation-timing-function: linear;
+            }
+            @keyframes color {
+                0% {background: #0d234d;}
+                25% {background: #b1e1e2}
+                50% {background: #b7b1e2;}
+                75% {background: #312a6a;}
+                100% {background: #0d234d;}
+            }
+        </style>
+    </head>
+
+    <body>
+        <section>
+            <article class="sky">
+                <img src="./img/sun.png" alt="태양" class="sun">
+                <img src="./img/moon.png" alt="달" class="moon">
+                <img src="./img/cloud.png" alt="큰 구름" class="cloud_1">
+                <img src="./img/cloud.png" alt="작은 구름" class="cloud_2">
+            </article>
+
+            <article class="city">
+                <img src="./img/city.png" alt="" class="city_img">
+            </article>
+        </section>
+    </body>
+
+</html>
