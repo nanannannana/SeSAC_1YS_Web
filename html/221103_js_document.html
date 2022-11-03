@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Document</title>
+        <script>
+            console.log(document.documentElement); //문서에 있는 모든 요소 가져옴
+            console.log(document.head); //head태그의 요소만
+            console.log(document.title); //title태그의 요소만
+            console.log(document.URL); //내가 지금 접속해있는 주소
+            console.log(document.domain);  //내가 지금 접속해있는 도메인?
+        </script>
+    </head>
+    <body>
+        <img src="진돗개.jpg" width="100" height="100">
+        <img src="진돗개.jpg" width="100" height="100">
+        <img src="진돗개.jpg" width="100" height="100">
+        <div id="div1">
+            <input type="text" id="input1" value="입력값">
+            <p class="css1">p1</p>
+            <p class="css1">p2</p>
+            <div>
+                <p class="css1">p3</p>
+                <button type="button" onclick="getData();">input버튼</button>
+                <button type="button" onclick="getData2();">p태그버튼</button>
+            </div>
+        </div>
+
+        <script>
+            console.log(document.getElementById("input1")); //단수형; id가 input1인 요소를 찾아서 속성값 출력
+            console.log(document.getElementsByClassName("css1")); //해당하는 여러 개 요소를 가져옴; 불러와진 요소의 개수와 관계없이 리스트형으로 가져옴
+            console.log(document.getElementsByClassName("css1")[0]); //class 하나만 가져오는 방법(index로 접근)
+            console.log(document.getElementsByTagName("img"));
+
+            console.log(document.querySelector("#input1"));
+            console.log(document.querySelector(".css1")); //몇 개가 있든 무조건 하나만 가져옴, 가장 위에있는 하나만 가져옴
+            console.log(document.querySelectorAll(".css1")); //여러 개를 가져오고 싶을 경우 All사용
+
+            function getData(){
+                var input = document.getElementById("input1");
+                console.log(input.value);
+            }
+            function getData2() {
+                var p1 = document.getElementsByClassName("css1")[0];
+                console.log(p1);
+                console.log(p1.value); //p태그에는 value속성이 없음. undefind값 나옴
+                console.log(p1.text)
+                console.log(p1.html);
+                console.log(p1.innerText);
+                console.log(p1.innerHTML);
+
+                p1.innerText="<strong>p태그입니다.</strong>";
+                p1.innerHTML="<strong>p태그입니다.</strong>";
+                //innerText와 innerHTML의 차이는 내가 적은 문자열이 요소로 인식을 하냐 문자열로 인식을 하냐의 차이임.
+            }
+        </script>
+    </body>
+</html>

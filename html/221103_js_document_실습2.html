@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script>
+
+        </script>
+    </head>
+    <body>
+        <p>방명록입니다.</p>
+        <strong>작성자</strong>
+        <input type="text" id="input1"><br>
+        <strong>내용</strong>
+        <input type="text" id="input2"><br>
+        <button type="button" onclick="add()">작성</button>
+
+        <table id="table" border="1" cellpadding="5" cellspacing="1" style="text-align:center">
+            <tr>
+                <td>번호</td>
+                <td>작성자</td>
+                <td>내용</td>
+                <td>작성일</td>
+            </tr>
+            
+        </table>
+
+        <script>
+            function add() {
+                
+
+                var val2 = document.getElementById("input1").value;
+                var val3 = document.getElementById("input2").value;
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth();
+                var day = date.getDate()
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                var sec = date.getSeconds();
+
+                // table element 찾기
+                var table = document.getElementById('table');   
+                // 새 행 추가하기
+                var num = document.querySelectorAll("tr").length;
+                var newRow = table.insertRow();
+                // 새 행에 CELL(열) 추가하기
+                var newcell1 = newRow.insertCell(0);
+                var newcell2 = newRow.insertCell(1);
+                var newcell3 = newRow.insertCell(2);
+                var newcell4 = newRow.insertCell(3);
+
+                // CELL에 텍스트 추가하기
+                console.log( num );
+                newcell1.innerText = num;
+                newcell2.innerText = val2;
+                newcell3.innerText = val3;
+                newcell4.innerText = year+"-"+month+"-"+day+" "+hour+":"+min+" "+sec
+            }
+
+        </script>
+    </body>
+</html>

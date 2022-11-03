@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script>
+         
+        </script>
+    </head>
+    <body>
+        <span>값1:</span>
+        <input type="text" id="input1"><br>
+        <span>값2:</span>
+        <input type="text" id="input2"><br>
+        <span>연산자:</span>
+        <input type="text" id="input3"><br>
+        <span>결과:</span>
+        <input type="text" id="input4"><br>
+        <br>
+        <button type="button" onclick="run()">계산하기</button>
+        <button type="button" onclick="remove()">초기화</button>
+
+        <script>
+            console.log(document.getElementById("input1"));
+            
+            
+            function run() {
+                var val1 = document.getElementById("input1").value;
+                var val2 = document.getElementById("input2").value;
+                var val3 = document.getElementById("input3").value;
+                if (val3=="+") {
+                    result = parseInt(val1) + parseInt(val2);
+                } else if (val3=="-") {
+                    result = parseInt(val1) - parseInt(val2);
+                } else if (val3=="*") {
+                    result = parseInt(val1) * parseInt(val2);
+                } else if (val3=="/") {
+                    result = parseInt(val1) / parseInt(val2);
+                }
+                document.getElementById("input4").value = result;
+            }
+
+            function remove() {
+                var val1 = document.getElementById("input1");
+                val1.value = null;
+                var val2 = document.getElementById("input2");
+                val2.value = null;
+                var val3 = document.getElementById("input3");
+                val3.value = null;
+                var val4 = document.getElementById("input4");
+                val4.value = null;
+            }          
+        </script>
+    </body>
+</html>
