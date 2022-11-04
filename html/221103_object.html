@@ -13,7 +13,7 @@
             console.log(cat.mew());
 
 
-            //
+            //return값
             function hello() {
                 return "안녕";
             }
@@ -33,7 +33,7 @@
             console.log(arr1);
             console.log(arr2);
             console.log(arr1[0]); //index는 0번부터
-            console.log(arr1.indexOf('a')); //indexOF: index 순서를 알려주는 함수
+            console.log(arr1.indexOf('a')); //indexOf: index 순서를 알려주는 함수
             console.log("length: "+arr1.length);
             // 배열 함수
             console.log('-------------');
@@ -57,12 +57,11 @@
                     name:'yeji',
                     birth:'0204'
             };
-            console.log(me);
-            console.log(me["name"]);
-            console.log(me.name);
 
-            me.gender='F';
-            me['age']=23; //객체에서는 .(온점)으로도 가져올 수 있고 [](대괄호)로도 가져올 수 있음!
+            me.gender='F'; //.(온점)을 사용하여 객체에 속성 추가
+            me['age']=23; //[](대괄호)를 사용하여 객체에 속성 추가
+            console.log(me.name); //.(온점) 사용해서 값 가져오기
+            console.log(me["age"]); //[](대괄호)사용해서 값 가져오기
             console.log(me);
             
             //date 함수
