@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js" ></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+​
+        <style>
+            div {
+                width: 100;
+                height: 100;
+            }
+            div:hover{
+                cursor: pointer;
+            }
+            .red {
+                background-color: red;
+            }
+            .orange {
+                background-color: orange;
+            }
+            .yellow {
+                background-color: yellow;
+            }
+            .green {
+                background-color: green;
+            }
+            .blue {
+                background-color: blue;
+            }
+            .purple {
+                background-color: purple;
+            }
+        </style>
+        <script>
+            function changeColor(){
+                // $("div").switchClass("red","orange");
+                // $("div").switchClass("orange","yellow");
+                // $("div").switchClass("yellow","green");
+                // $("div").switchClass("green","blue");
+                // $("div").switchClass("blue","purple");
+                // $("div").switchClass("purple","red");
+
+                if ($("div").attr("class")=="red") {
+                    $("div").switchClass("red","orange");
+                } else if ($("div").attr("class")=="orange") {
+                    $("div").switchClass("orange","yellow");
+                } else if ($("div").attr("class")=="yellow") {
+                    $("div").switchClass("yellow","green");
+                } else if ($("div").attr("class")=="green") {
+                    $("div").switchClass("green","blue");
+                } else if ($("div").attr("class")=="blue") {
+                    $("div").switchClass("blue","purple");
+                } else if ($("div").attr("class")=="purple") {
+                    $("div").switchClass("purple","red");
+                } 
+                // $("div").attr("class")
+                // console.log($("div").attr("class"));
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1" class="red" onclick="changeColor();"></div>
+    </body>
+</html>

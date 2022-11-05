@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script>
+            function getData() {
+                var value1 = document.getElementById("input1").valuel;
+                console.log(value1);
+
+                var value2 = $("#input1").val();
+                console.log(value2);
+            }
+
+            function setData() {
+                // document.getElementById("input1").value = "hi";
+                $("input1").val("hello");
+            }
+
+            function setStyle1() {
+                var p = document.querySelector("#p1");
+                p.style = 'background-color:yellow; color:blue';
+            }
+
+            function setStyle2() {
+                $("#p1").css('background-color','red'); //css('속성이름','속성값')
+            }
+            function setStyle3() {
+                $('#p1').attr('style','background-color:blue; color:white;');
+            }
+            function changeText() {
+                console.log($('p1').text());
+                $('#p1').text('글자 변경') //doc의 ineerText와 같은 속성
+            }
+            function changeHTML() {
+                $('#p1').html('<strong>굵은 글자 변경</strong>'); //ineerHTML과 같은 속성
+            }
+            function append1() {
+                document.querySelector('#p1').append('<h2>h2</h2>'); //<>를 문자열로 인식
+                $('#p1').append('<h3>h3태그입니다.</h3>'); //<>를 HTML요소로 인식
+            }
+            function append() {
+                $('#ul').append("<li>>append</li>"); //맨 앞에 추가
+            }
+            function prepend() {
+                $('#ul').prepend('<li>prepend</li>'); //맨 앞에 추가
+            }
+            function before() {
+                $('#li1').before('<li>before</li>'); //나를 기준으로 형제태그 추가(앞)
+            }
+            function after() {
+                $('#li1').after('<li>after</li>'); //나를 기준으로 형제태그 추가(뒤)
+            }
+            function remove() {
+                $('li').remove(); //해당이 되는 모든 요소들이 자기 자신을 지우는 것
+            }
+            function empty() {
+                $('#ul').empty(); //부모 아래에 있는 모든 자식(자손 포함)들 삭제
+            }
+            function parent() {
+                console.log($('#li1').parent());
+                console.log($('#li1').parent().parent());
+                console.log($('#li1').parent().prev()); //부모의 이전 형제
+                console.log($('#li1').parent().next()); //부모의 다음 형제
+                $('#li1').parent().append('<li>parentAppend</li>');
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="parent()">parent</button>
+        <ul id = "ul">
+            <li id = "li1">기준 li</li>
+        </ul>
+        <button type="button" onclick="remove()">remove</button>
+        <button type="button" onclick="empty()">empty</button>
+        <hr>
+        <!-- <button type="button" onclick="append1()">append</button> -->
+        <button type="button" onclick="append()">append</button>
+        <button type="button" onclick="prepend()">prepend</button> 
+        <button type="button" onclick="before()">before</button>
+        <button type="button" onclick="after()">after</button>
+        <p id="p1">p태그 입니다.</p>
+        
+        <hr>
+        <button type="button" onclick="setStyle1()">javascript로 바꾸기</button>
+        <button type="button" onclick="setStyle2()">jQuery로 바꾸기</button>
+        <button type="button" onclick="setStyle3()">jQuery로 바꾸기2</button>
+        <hr>
+        <button type="button" onclick="changeText()">text 변경</button>
+        <button type="button" onclick="changeHTML()">html 변경</button>
+        <hr>
+        <input type="text" id="input1">
+        <button type="button" onclick="getData()">값 가져오기</button>
+        <button type="button" onclick="setData()">값 설정오기</button>
+    </body>
+</html>
