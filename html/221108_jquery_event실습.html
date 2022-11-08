@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <style>
+            td {
+                width:100px;
+                height:100px;
+                /* border: 1px solid red; */
+                vertical-align: top; /* 테이블 안에 글자 위치 지정하기 */
+            }
+        </style>    
+    </head>
+
+    <body>
+        <div>
+            날짜: <input type="text" id="text1"><br>
+            내용: <input type="text" id="text2"><br>
+            <button type="button" onclick="cc()">작성</button>
+        </div>
+        <div>
+            <p style="text-align:center; font-size:30px; color:green;">2022년 7월</p>
+            <table cellpadding="20" align="center">
+                <tr>
+                    <td style="color:red;">日</td>
+                    <td>月</td>
+                    <td>火</td>
+                    <td>水</td>
+                    <td>木</td>
+                    <td>金</td>
+                    <td style="color:blue;">土</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <!-- <td valign="top">1</td> -->
+                    <td style="color:blue;" colspan="7">2</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td style="color:blue;">9</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td style="color:blue;">16</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td style="color:blue;">23</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td style="color:blue;">30</td>
+                </tr>
+                <tr>
+                    <td style="color:red;">31</td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            var td;  //전역변수
+            $("td").click(function() {
+                td = this;
+                console.log(this);
+                var value1 = $(this).text();  //지역변수
+                $("#text1").val(value1);     
+            });
+            function cc() {
+                var value2 = $("#text2").val();
+                $(td).append("<br>"+value2); 
+                console.log(td);            
+            };
+            
+        </script>
+    </body>
+</html>

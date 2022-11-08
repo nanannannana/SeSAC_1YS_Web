@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <h2>피자 주문</h2>
+        <fieldset style="border:1px solid red;">
+            <legend>사이즈</legend>
+            <p>Large - 24000원</p>
+        </fieldset>
+        <fieldset style="border:1px solid red;">
+            <legend>추가 주문</legend>
+            <input id=check type="checkbox" name="추가주문" value="800" onclick="sum(this);">피클(800원)
+            <input id=check type="checkbox" name="추가주문" value="300" onclick="sum(this);">칠리 소스(300원)
+            <input id=check type="checkbox" name="추가주문" value="200" onclick="sum(this);">디핑 소스(200원)
+            <br>
+            <input id=check type="checkbox" name="추가주문" value="800" onclick="sum(this);">치즈스틱(4개, 800원)
+            <input id=check type="checkbox" name="추가주문" value="2400" onclick="sum(this);">콘 샐러드(2400원)
+        </fieldset>
+        <fieldset style="border:1px solid red;">
+            <legend>합계</legend>
+            <p id="total"></p>
+        </fieldset>
+
+        <script>
+            var price  = 24000;
+            function sum(obj) {
+                // var check = $('obj').prop("checked");
+                var check = $(obj).is(":checked");
+                // console.log(check);
+                var value = $(obj).val();
+                if (check==true) {
+                    price = price + parseInt(value);
+                } else if (check==false) {
+                    price = price - parseInt(value);
+                }
+                // console.log(price);
+                $('#total').text(price+"원");
+            }
+        </script>
+    </body>
+</html>

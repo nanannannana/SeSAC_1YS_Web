@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        body 태그
+        <input type="text" id="input1">
+        <p id="alert"></p>
+        <div style="width: 100px; height: 500px; background-color:yellow;" id="div1"></div>
+        <script>
+            // 키보드 이벤트
+            $("#input1").keydown(function(e) {
+                console.log("keydown : ", e.currentTarget.value );
+                $("#alert").text("글자가 입력됨, " + e.currentTarget.value );
+                // console.log( "input keydown" );
+                // console.log(e);
+                // if ( e.keyCode == 13 ) {
+                //     console.log( "enter key" );
+                // }
+            });
+            $("#input1").keyup(function(e) {
+                console.log("keyup : ", e.currentTarget.value );
+                // console.log( "input keyup");
+            });
+​
+            // 마우스 이벤트
+            $("#div1").click(function(){
+                console.log( "div click" );
+            });
+            $("#div1").mouseover(function(){
+                console.log( "div mouseover");
+            });
+            $("#div1").hover(function(){
+                console.log( "div hover");
+            }, function() {
+                console.log( "div hover2");
+            });
+            $( window ).scroll(function(){
+                console.log( "window scroll" );
+            });
+            
+            // 로딩 이벤트
+            // $(document).ready(function() {
+            //     alert("document.ready");
+            // });
+            // $(function(){
+            //     alert("ready")
+            // });
+​
+​
+        </script>
+    </body>
+</html>
