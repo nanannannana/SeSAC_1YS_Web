@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>fullpage 연습</title>
+        <link rel="stylesheet" href="./fullPage.js-2.9.7/jquery.fullPage.css">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./fullPage.js-2.9.7/jquery.fullPage.js"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="./jquery-ui-1.13.2/jquery-ui.css">
+        <script>
+            $(document).ready(function() {
+                $('#fullpage').fullpage({
+                    //options here
+                    autoScrolling:true,
+                    scrollHorizontally: true,
+                    navigation: true,
+                    navigationPosstion: 'right',
+                    sectionsColor: ['#DB0000', '#EAEAEA','#FFBB00','#9536FF'],
+                });
+            });
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet&family=Song+Myung&display=swap');
+            * {
+                font-family: 'Song Myung', serif;
+            }
+            #section1 {
+                text-align:center;
+                font-size: 120px;
+                color:white;
+            }
+            #s2title {
+                width: 100%;
+                height: 100%;
+                padding-right: 20%;
+                padding-left: 13%;
+                position: relative;
+                box-sizing: border-box;
+            }
+            #title1 {
+                width: 100%;
+                height: 100%;
+                padding-right: 20%;
+                padding-left: 13%;
+                position: relative;
+                box-sizing: border-box;
+            }
+            #title2 {
+                width: 100%;
+                height: 100%;
+                text-align:right;
+                padding-right: 20%;
+                padding-left: 13%;
+                position: relative;
+                box-sizing: border-box;
+            }
+            .s2img1 {
+                position:fixed;
+                left:600px;
+                top:600px;
+            }
+            .s2img2 {
+                display:flex;
+                justify-content:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="fullpage">
+            <div class="section" id="section1">
+                <p>첫 화면</p>
+            </div>
+            <div class="section" id="section2">
+                <div>
+                    <h1 id="title1" style="font-size: 60px; line-height:50px;">러브레터</h1>
+                    <p id="title1" style="line-height:10px;">매우 재밌음</p>
+                    <p id="title1" style="line-height:5px;">마지막에 많이 안타까움ㅜ</p>
+                </div>
+                <div>
+                    <!-- <img class="s2img2" src="./loveletter.jpg" height="500px" weight="100px"> -->
+                </div>
+            </div>
+            <div class="section active" id="section3">
+                <div>
+                    <h1 id="title2" style="font-size:60px; line-height:10px;">죽은 시인의</h1>
+                    <h1 id="title2" style="font-size:60px; line-height:50px;">사회</h1>
+                </div>
+            </div>
+            <div class="section" id="section4">
+                <div>
+                    <h1 id="title1" style="font-size:60px; line-height:50px;">코코</h1>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

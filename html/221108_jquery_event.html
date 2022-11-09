@@ -27,25 +27,25 @@
             $("#div1").click(function(){
                 console.log( "div click" );
             });
-            $("#div1").mouseover(function(){
+            $("#div1").mouseover(function(){ //마우스를 갖다 대었을 때 발생하는 이벤트
                 console.log( "div mouseover");
             });
-            $("#div1").hover(function(){
+            $("#div1").hover(function(){  //마우스를 갖다 대었을 때, 땔 때 모두 발생하는 이벤트
                 console.log( "div hover");
             }, function() {
-                console.log( "div hover2");
+                console.log( "div hover2");  //함수를 두 개 작성하면 마우스를 갖다 대었을 때와 땠을 때 다른 코드가 적용됨.
             });
-            $( window ).scroll(function(){
+            $( window ).scroll(function(){  //window: 윈도우 창, scroll했을 때 발생하는 이벤트
                 console.log( "window scroll" );
             });
             
             // 로딩 이벤트
-            // $(document).ready(function() {
-            //     alert("document.ready");
-            // });
-            // $(function(){
-            //     alert("ready")
-            // });
+            $(document).ready(function() {
+                alert("document.ready");
+            });
+            $(function(){
+                alert("ready")
+            });
 ​
 ​
         </script>
