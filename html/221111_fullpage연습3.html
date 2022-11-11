@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>fullpage 연습</title>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="./fullPage.js-2.9.7/jquery.fullPage.css">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./fullPage.js-2.9.7/jquery.fullPage.js"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="./jquery-ui-1.13.2/jquery-ui.css">
+        <script>
+            $(document).ready(function() {
+                $('#fullpage').fullpage({
+                    //options here
+                    autoScrolling:true,
+                    scrollHorizontally: true,
+                    navigation: true,
+                    navigationPosstion: 'right',
+                    sectionsColor: ['#DB0000', '#EAEAEA','#FFBB00','#EAEAEA'],
+                    onLeave: function(index){
+                        // var destination = this;
+                        if (index==1){
+                            $('#img1').addClass("animate__animated animate__bounceInUp animate__delay-1s");
+                            //classList는 js 사용해야 함, jQuery를 사용하고 싶으면 addClass로 변경하기!
+                        } else if(index==2){
+                            $('#img2').addClass("animate__animated animate__bounceInUp animate__delay-1s");
+                        } else if(index==3) {
+                            $('#img3').addClass("animate__animated animate__bounceInUp animate__delay-1s");
+                        }
+                    }
+                });
+            });
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet&family=Song+Myung&display=swap');
+            * {
+                font-family: 'Song Myung', serif;
+            }
+            #header {
+                position:fixed;
+                height: 50px;
+                display:block;
+                width: 100%;
+                z-index:10;
+                color: #f2f2f2;
+            }
+            .section {
+                padding-right: 20%;
+                padding-left: 20%;
+            }
+            #section0 {
+                text-align:center;
+                font-size: 120px;
+                color:white;
+            }
+            /* #section2 {        라이브러리가 적용되면서 새로운 div가 만들어져서 section2밑에 있는 div들을 인식 못해 문제 발생
+                display:flex; */
+                /* flex-direction:row; */
+                /* flex-wrap:wrap;
+            } */
+            #section1 > div,#section3 > div {  /*그렇기 때문에 div를 잘 찾을 수 있도록 명시해줌*/
+                display: flex;
+                flex-wrap:wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #section2 > div {  /*그렇기 때문에 div를 잘 찾을 수 있도록 명시해줌*/
+                display: flex;
+                flex-direction: row-reverse;
+                flex-wrap:wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            img {
+                max-width: 100%; /* 화면에 맞게 크기 조정*/
+                height:auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <nav>
+                <div class="nav-wrapper deep-orange darken-4">
+                <a href="#" class="brand-logo">hello</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">첫 화면</a></li>
+                    <li><a href="#">두 번째 화면</a></li>
+                    <li><a href="#">세 번째 화면</a></li>
+                    <li><a href="#">네 번째 화면</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+        <div id="fullpage">
+            <div class="section active" id="section0">
+                <p>첫 화면</p>
+            </div>
+            <div class="section" id="section1">
+                <div id="box1">
+                    <h1 id="title1" style="font-size: 60px; line-height:50px;">제목1</h1>
+                    <p id="title1" style="line-height:10px;">내용내용내용내용내용</p>
+                </div>
+                <div>
+                    <img src="./landscape1.png" id="img1" height="300px;" width="500px;" onclick="ck();">
+                </div>
+            </div>
+            <div class="section" id="section2">
+                <div>
+                    <h1 id="title2" style="font-size:60px; line-height:50px;">제목2</h1>
+                    <p id="title2" style="line-height:10px;">내용내용내용내용내용</p>
+                </div>
+                <div>
+                    <img src="./landscape2.jpg" id="img2" height="300px;" width="500px;" onclick="ck2();">
+                </div>
+            </div>
+            <div class="section" id="section3">
+                <div>
+                    <h1 id="title1" style="font-size:60px; line-height:50px;">제목3</h1>
+                    <p id="title1" style="line-height:10px;">내용내용내용내용내용</p>
+                </div>
+                <div>
+                    <img src="./landscape3.jpg" id="img3" height="300px;" width="500px;" onclick="ck3();">
+                </div>
+            </div>
+        </div>
+        <script>
+            function ck() {
+                Swal.fire({
+                    imageUrl: "https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_1280.png",
+                    imageHeight: 200,
+                    imageAlt: '첫 번째 이미지'
+                });
+            }
+            function ck2() {
+                Swal.fire({
+                    title: 'awesome!',
+                    text: 'beautiful landscape.',
+                    imageUrl: 'https://cdn.pixabay.com/photo/2016/09/08/13/58/desert-1654439_1280.jpg',
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: 'desert',
+                });
+            }
+            function ck3() {
+                Swal.fire({
+                    title: 'awesome!',
+                    text: 'beautiful landscape.',
+                    imageUrl: 'https://cdn.pixabay.com/photo/2019/08/06/02/16/mountains-4387209_1280.jpg',
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: 'mountain',
+                });
+            }
+        </script>
+    </body>
+</html>

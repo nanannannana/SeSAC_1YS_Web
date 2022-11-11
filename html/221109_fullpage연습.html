@@ -30,61 +30,69 @@
                 padding-right: 20%;
                 padding-left: 20%;
             }
-            #section1 {
+            #section0 {
+                background-size:cover;
+                background-image: url(movie.jpg);
                 text-align:center;
                 font-size: 120px;
                 color:white;
-            }
-            #section2 {
-                position:flex;
                 width:100%;
                 height:100%;
-                flex-direction:row;
-                flex-wrap:wrap;
+                line-height: 15px;
             }
-            #title1 {
-                /* width: 100%;
-                height: 100%; */
-                position: relative;
-                z-index:2;
+            #section1 > div, #section3 > div {
+                display:flex;
+                height:100%;
+                align-items: center;
+                justify-content: space-between;
+            }
+            #section2 > div {
+                display:flex;
+                height:100%;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row-reverse;
             }
             #title2 {
                 text-align:right; 
                 position: relative;
             }
-            .s2img {
-                /* height: 100%; */
-                width:50%;
-                z-index:1;
+            img {
+                object-fit: contain;
+                width: 400px;
+                height:500px;
             }
         </style>
     </head>
     <body>
         <div id="fullpage">
-            <div class="section" id="section1">
-                <p>첫 화면</p>
+            <div class="section active" id="section0">
+                <p>크리스마스</p>
+                <p>영화 추천</p>
             </div>
-            <div class="section active" id="section2">
+            <div class="section" id="section1">
                 <div>
-                    <h1 id="title1" style="font-size: 60px; line-height:50px;">러브레터</h1>
-                    <p id="title1" style="line-height:10px;">매우 재밌음</p>
-                    <p id="title1" style="line-height:5px;">마지막에 많이 안타까움ㅜ</p>
+                    <h1 id="title1" style="font-size: 60px;">러브레터</h1>
                 </div>
                 <div>
                     <img class="s2img" src="./loveletter.jpg">
                 </div>
             </div>
-            <div class="section" id="section3">
+            <div class="section" id="section2">
                 <div>
-                    <h1 id="title2" style="font-size:60px; line-height:10px;">죽은 시인의</h1>
-                    <h1 id="title2" style="font-size:60px; line-height:50px;">사회</h1>
-                    <p id="title2" style="line-height:10px;">이건 더 슬픔 눈물 찍찍ㅜ</p>
+                    <h1 id="title2" style="font-size:60px;">죽은 시인의</h1>
+                    <h1 id="title2" style="font-size:60px; line-height: 5px;">사회</h1>
+                </div>
+                <div>
+                    <img src="dps.jpg">
                 </div>
             </div>
-            <div class="section" id="section4">
+            <div class="section" id="section3">
                 <div>
-                    <h1 id="title1" style="font-size:60px; line-height:50px;">코코</h1>
-                    <p id="title1" style="line-height:10px;">감동적인데 마지막에 오열</p>
+                    <h1 id="title1" style="font-size:60px;">코코</h1>
+                </div>
+                <div>
+                    <img src="coco.jpg">
                 </div>
             </div>
         </div>
