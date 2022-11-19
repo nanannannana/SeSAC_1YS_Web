@@ -7,6 +7,7 @@ console.log(url.format(obj)); //나누어져 있는 문자열을 다시 합침
 console.log(obj.protocol);
 console.log("---------");
 
+//searchParams은 일부 함수를 사용하여 조작해야 함.
 var string = new url.URL('https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0');
 console.log(string);
 console.log(string.searchParams);

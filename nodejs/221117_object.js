@@ -19,5 +19,5 @@ console.log("os.freemem: ",os.freemem());
 //path모듈
 const path = require('path');
 const file = __filename;
-console.log("path.extname: ", path.extname(file)); //파일의 확장자를 가져옴
-console.log("path.parse: ", path.parse(file)); //parse는 파일의 경로를 구분지어서 보여줌(ex, 확장자 등)
+console.log("path.extname: ", path.extname(file)); //파일의 확장자(base만)를 가져옴
+console.log("path.parse: ", path.parse(file)); //parse는 파일의 경로를 구분지어서 보여줌(ex, rootm dir, base(확장자) 등)

@@ -16,6 +16,7 @@ function getDetail(video,cb) {
     },1000);
 }
 
+//callback함수 사용
 login('kim','1234',function(user){
     getVideo(user, function(videos) {
         getDetail(videos[0], function(msg){
