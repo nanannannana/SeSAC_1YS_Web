@@ -1,5 +1,3 @@
-const { stringify } = require("querystring");
-
 const fs = require("fs").promises;   
 
 fs.writeFile("./sesac.txt","반갑습니다")

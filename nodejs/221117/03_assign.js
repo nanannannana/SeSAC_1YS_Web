@@ -36,6 +36,6 @@ console.log(a);
 console.log(key1);
 console.log(c);
 
-let { b, ...rest} = obj; //배열이나 객체를 전개?해서 가져옴, 전개 연산자는 가장 마지막에 위치시켜야 함
+let { b, ...rest} = obj; //rest(나머자 연산자)는 가장 마지막에 위치시켜야 함
 console.log(b);
 console.log(rest); //지정 키값 빼고 나머지 키와 값을 가져옴
