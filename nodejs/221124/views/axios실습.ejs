@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>axios</title>
+    <script>
+        function sendGet() {
+            var form = document.getElementById("form_info");
+            // var p1 = document.createElement('p');
+            axios({
+                method: "get",
+                url: "/form2",
+                params: {
+                    name: form.name.value,
+                    gender: form.gender.value,
+                    birthYear: form.birthYear.value,
+                    birthMonth: form.birthMonth.value,
+                    birthDate: form.birthDate.value
+                }
+            })
+            .then(function(res) {
+                console.log(res);
+                alert(res.data);  //알림창으로 나오게 하기
+                // p1.innerText = res.data;
+                // p1.classList = "p1";
+                // var body = document.querySelector('body');
+                // body.append(p1);   //화면 안에 res.data 나오게 하기
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        이름 <input type="text" name="name">
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" value="male" id="m"><label for="m">남자</label>
+            <input type="radio" name="gender" value="female" id="f"><label for="f">여자</label>
+        </fieldset>
+        <fieldset>
+            <legend>생년월일</legend>
+            <select name="birthYear">
+                <%for(var i=2010 ; i <2023 ; i++) { %>
+                    <option value="<%=i%>"><%=i%></option>년
+                <% } %>
+            </select>
+            <select name="birthMonth">
+                <%for(var i=1 ; i <13 ; i++) { %>
+                    <option value="<%=i%>"><%=i%></option>월
+                <% } %>
+            </select>
+            <select name="birthDate">
+                <%for(var i=1 ; i <32 ; i++) { %>
+                    <option value="<%=i%>"><%=i%></option>일
+                <% } %>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="habbit" value="trip">여행
+            <input type="checkbox" name="habbit" value="fashion">패션
+            <input type="checkbox" name="habbit" value="food">음식
+        </fieldset>
+        <button type="button" onclick="sendGet()">회원가입</button>
+    </form>
+</body>
+</html>

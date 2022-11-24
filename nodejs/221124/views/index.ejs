@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <script>
+        function sendGet() {
+            var form = document.getElementById("form_info");
+            // ex) form.name.value : form태그 안에 name속성이 name인 value를 가져옴
+            // 즉,form에서 특정 input의 값을 가져올 때는 input태그에 id를 지정하는 것이 아닌 name속성값을 지정
+            axios({
+                method: "get",
+                url: "/form",
+                params: {name: form.name.value} //get으로 보낼 때는 params
+            }).then(function(res){
+                alert(res.data);
+            }); //응답 전체를 then이 받음 그 중에 data객체를 사용
+            //axios함수는 비동기 html메소드, 따라서 응답에 관한 코드를 작성해주어야 함
+        }
+
+        function sendPost() {
+            var form = document.getElementById("form_info");
+            axios({
+                method: "post",
+                url: "/form",
+                data: {name: form.name.value}  //post로 보낼 때는 data
+            }).then(function(res){
+                alert(res.data);
+            });
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="sendGet();">get</button>
+    <button type="button" onclick="sendGet();">post</button>
+    <form id="form_info">
+        <input type="text" name="name">
+    </form>
+</body>
+</html>

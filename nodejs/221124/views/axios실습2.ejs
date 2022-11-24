@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>axios</title>
+    <script>
+        function sendPost() {
+            var form = document.getElementById('form_info');
+            // var p1 = document.createElement('p');
+            axios({
+                method: "post",
+                url: "/form3",
+                data: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                }
+            })
+            .then(function(res) {
+                console.log(res.data);
+                document.querySelector("#result").innerHTML = res.data;
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        id <input type="text" name="id" pattern="^[a-zA-Z0-9]{2,}$">
+        pw <input type="password" name="pw" pattern="^[a-zA-Z0-9]{2,6}$">
+        <button type="button" onclick="sendPost()">로그인</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>
