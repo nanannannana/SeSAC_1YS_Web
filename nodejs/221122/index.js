@@ -14,7 +14,7 @@ const port = 8080; //1023이상의 숫자입력
 app.set("view engine", "ejs");
 
 //클라이언트가 어떠한 파일을 접근할 수 있도록 권한을 주는 방법
-//app.use함수는 미들웨어..?
+//app.use함수는 미들웨어
 // 첫 번째 인자("/public")는 가상 경로 입력(어떠한 이름도 상관 없음)
 // 두 번째 인자는 express.static함수, express.static 메소드 안에 쓴 인자는 실제로 존재하는 폴더명을 넣어주어야 함
 
