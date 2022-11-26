@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function reset() {
+            var form = document.getElementById("form_info");
+            var file = document.getElementById("file");
+            form.id.value("");
+            form.pw.value("");
+            form.name.value("");
+            form.age.value("");
+            file.value("");
+        }
+        function post() {
+            const formData = new FormData();
+            var form = document.getElementById("form_info");
+            var file = document.getElementById("file");
+            formData.append("id",form.id.value);
+            formData.append("userfile", file.files[0]);
+            var body = document.querySelector("body");
+            var img = document.querySelector("img");
+            axios({
+                method: "post",
+                url: "/postupload",
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+                data: formData,
+            })
+            .then(function(res) {
+                img.remove();
+                img.src = "/uploads/"+res.data;
+                body.append(img);
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        <fieldset>
+            <legend>개인 정보</legend>
+            아이디: <input type="text" name="id"><br>
+            비밀번호: <input type="password" name="pw"><br>
+            이름: <input type="text" name="name"><br>
+            나이: <input type="text" name="age"><br>
+        </fieldset>
+        <input type="file" name="userfile" id="file">
+        <button type="button" onclick="reset()">리셋</button>
+        <button type="button" onclick="post()">회원가입</button>
+    </form>
+    <img>
+</body>
+</html>

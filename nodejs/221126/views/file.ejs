@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5> upload.single() </h5>
+    <form action="/upload-single" method="post" enctype="multipart/form-data">
+        <input type="text" name="name"><br>
+        <input type="file" name="userfile"><br>
+        <input type="text" name="name2"><br>
+        <!-- file 이전까지의 데이터는 multer에서 처리 가능, file 이후의 데이터는 처리 불가능
+        따라서, 파일명을 입력한대로 지정하고 싶을 때 file 전에 name값에 관한 코드 작성 -->
+        <button type="submit">업로드</button>
+    </form>
+    <!-- enctype: 인코딩 타입?
+    multipart: 문자 인코딩하지 않겠다는 의미(파일같은 경우, 인코딩을 하면 파일이 깨질 수 있음) -->
+
+    <h5> upload.array() </h5>
+    <form action="/upload-array" method="post" enctype="multipart/form-data">
+        <input type="file" name="userfile" multiple><br>
+        <!-- multiple속성 파일 여러 개 업로드 -->
+        <button type="submit">업로드</button>
+    </form>
+
+    <h5> upload.fields() </h5>
+    <form action="/upload-fields" method="post" enctype="multipart/form-data">
+        <input type="file" name="userfile1"><br>
+        <input type="file" name="userfile2"><br>
+        <input type="file" name="userfile3"><br>
+        <button type="submit">업로드</button>
+    </form>
+</body>
+</html>
