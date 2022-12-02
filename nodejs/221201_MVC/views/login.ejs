@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        #result{
+            color: red;
+        }
+    </style>
+    <script>
+        function login() {
+            var form = document.getElementById("form_info");
+            axios({
+                method: "post",
+                url: "/login",
+                data: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                }
+            })
+            .then(function(res) {
+                document.getElementById("result").innerHTML = res.data;
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        id <input type="text" name="id">
+        pw <input type="password" name="pw">
+        <button type="button" onclick="login()">로그인</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>
