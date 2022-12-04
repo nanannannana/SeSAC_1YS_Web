@@ -6,8 +6,8 @@ exports.main = function(req,res) {
 exports.form_ing = function(req,res) {
     res.render("form");
 }
-exports.form_sub = function(req,res) {
-    user.form_sub(req.body,function() {
+exports.form_suc = function(req,res) {
+    user.form_suc(req.body,function() {
         res.send(req.body);
     })
 }
@@ -15,22 +15,21 @@ exports.form_sub = function(req,res) {
 exports.login = function(req,res) {
     res.render("login");
 }
-
-var info;
-exports.login_cl = function(req,res) {
-    var info = req.body;
-    user.login_cl(req.body ,function(result) {
-        res.send(result);
+exports.login_suc = function(req,res) {
+    user.login_suc(req.body ,function(rows) {
+        var login_flag = false;
+        if (rows.length>=1) login_flag = true
+        res.send(login_flag);
     });
 }
 
 exports.info_modify = function(req,res) {
-    res.render("modify", {
-        info: info
-    });
+    user.info_modify(req.body, function(rows) {
+        if (rows.length>=1) res.render("modify", { info: rows[0] });
+    })
 }
-exports.info_modify_sub = function(req,res) {
-    user.info_modify(function() {
+exports.info_modify_suc = function(req,res) {
+    user.info_modify_suc(req.body, function() {
         res.send(true);
     });
 }

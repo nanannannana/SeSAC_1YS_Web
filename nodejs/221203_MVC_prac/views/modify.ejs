@@ -6,20 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
-</head>
-<body>
-    <form id="form_info">
-        ID <input type="text" name="id" value="<%=info.id%>" readonly><br>
-        PW <input type="password" value="<%=info.pw%>" name="pw"><br>
-        이름 <input type="text" value="<%=info.name%>" name="name"><br><Br>
-        <button type="button" onclick="modify()">회원정보수정</button>
-    </form>
     <script>
         function modify() {
-            var form = document.getElementById("from_info");
+            var form = document.getElementById("form_info");
             axios({
                 method: "patch",
-                url: "/modify",
+                url: "/modify_suc",
                 data: {
                     id: form.id.value,
                     pw: form.pw.value,
@@ -31,5 +23,13 @@
             })
         }
     </script>
+</head>
+<body>
+    <form id="form_info">
+        ID <input type="text" name="id" value="<%=info.id%>" readonly><br>
+        PW <input type="password" value="<%=info.pw%>" name="pw"><br>
+        이름 <input type="text" value="<%=info.name%>" name="name"><br><Br>
+        <button type="button" onclick="modify()">회원정보수정</button>
+    </form>
 </body>
 </html>

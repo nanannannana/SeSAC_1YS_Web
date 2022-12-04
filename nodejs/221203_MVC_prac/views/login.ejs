@@ -8,6 +8,9 @@
     <title>Document</title>
 </head>
 <body>
+    <form id="form_hidden" action="/modify" method="post">
+        <input type="hidden" name="id">
+    </form>
     <form id="form_info">
         ID <input type="text" name="id">
         PW <input type="password" name="pw">
@@ -26,8 +29,12 @@
             })
             .then(function(res) {
                 // console.log(res);
-                if (res.data==true) location.href='modify'
-                else alert("로그인 실패!");
+                if (res.data==true) {
+                    var form_info = document.getElementById("form_hidden");
+                    form_info.id.value = form.id.value;
+                    form_info.submit();
+                    // document.location.href='/modify';
+                } else { alert("로그인 실패!") };
             })
         }
     </script>
