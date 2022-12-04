@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id="form_info">
+        ID <input type="text" name="id" value="<%=info.id%>" readonly><br>
+        PW <input type="password" value="<%=info.pw%>" name="pw"><br>
+        이름 <input type="text" value="<%=info.name%>" name="name"><br><Br>
+        <button type="button" onclick="modify()">회원정보수정</button>
+    </form>
+    <script>
+        function modify() {
+            var form = document.getElementById("from_info");
+            axios({
+                method: "patch",
+                url: "/modify",
+                data: {
+                    id: form.id.value,
+                    pw: form.pw.value,
+                    name: form.name.value
+                }
+            })
+            .then(function() {
+                alert("회원정보 수정 완료!");
+            })
+        }
+    </script>
+</body>
+</html>
