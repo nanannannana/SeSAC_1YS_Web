@@ -14,15 +14,9 @@ exports.register = function(req,res) {
     })
 }
 
-// exports.delete = function(req,res) {
-//     Visitor.delete_visitor(req.body.id, function(result) {
-//         res.send(true); // true = 삭제 완료
-//     })
-// }
-// mysql req.body.id에 해당하는 데이터 delete
-// 서버 응답 res.send
-
 exports.delete = function(req,res) {
+    // mysql req.body.id에 해당하는 데이터 delete
+    // 서버 응답 res.send
     Visitor.delete_visitor(req.body.id, function() {
         res.send(true); // true = 삭제 완료
     })

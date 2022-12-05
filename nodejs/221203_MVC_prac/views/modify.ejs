@@ -9,27 +9,47 @@
     <script>
         function modify() {
             var form = document.getElementById("form_info");
+            var info_data = {
+                id: form.id.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
             axios({
                 method: "patch",
                 url: "/modify_suc",
-                data: {
-                    id: form.id.value,
-                    pw: form.pw.value,
-                    name: form.name.value
-                }
+                data: info_data
             })
             .then(function() {
                 alert("회원정보 수정 완료!");
             })
         }
+        function info_del() {
+            var form = document.getElementById("form_info");
+            var info_data = {
+                id: form.id.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+            axios({
+                method: "delete",
+                url: "/modify_del",
+                data: info_data
+            })
+            .then(function() {
+                alert("회원탈퇴 완료!");
+            })
+        }
     </script>
 </head>
 <body>
+    <h3>profile</h3>
     <form id="form_info">
         ID <input type="text" name="id" value="<%=info.id%>" readonly><br>
-        PW <input type="password" value="<%=info.pw%>" name="pw"><br>
-        이름 <input type="text" value="<%=info.name%>" name="name"><br><Br>
-        <button type="button" onclick="modify()">회원정보수정</button>
+        PW <input type="password" value="<%=info.pw%>" name="pw" required><br>
+        이름 <input type="text" value="<%=info.name%>" name="name" required><br><Br>
+        <button type="button" onclick="modify();">회원정보수정</button>
+        <button type="button" onclick="info_del();">회원탈퇴</button><br><br>
+        <button type="button" onclick="location.href='/';">첫 페이지로</button>
     </form>
 </body>
 </html>

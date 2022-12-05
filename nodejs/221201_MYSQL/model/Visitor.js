@@ -4,7 +4,7 @@ const cnn = mysql.createConnection({
     host: 'localhost',
     user: 'user',
     password: '12123',
-    database: "데이터베이스"
+    database: "db"
 });
 
 exports.get_visitor = function(cb) {
@@ -25,14 +25,6 @@ exports.register_visitor = function(info,cb) {
     })
 }
 
-// exports.delete_visitor = function(id,cb) {
-//     var sql = `delete from visitor where id = ${id}`
-//     cnn.query(sql, function(err,result) {
-//         if (err) throw err;
-//         console.log("delete result:", result);
-//         cb(result);
-//     })
-// }
 exports.delete_visitor = function(id,cb) { 
     var sql = `delete from visitor where id = ${id}`; 
     cnn.query(sql, function(err,result) {

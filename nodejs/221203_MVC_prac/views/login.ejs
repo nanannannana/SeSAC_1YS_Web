@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
-</head>
-<body>
-    <form id="form_hidden" action="/modify" method="post">
-        <input type="hidden" name="id">
-    </form>
-    <form id="form_info">
-        ID <input type="text" name="id">
-        PW <input type="password" name="pw">
-        <button type="button" onclick="login();">로그인하기</button>
-    </form>
     <script>
         function login() {
             var form = document.getElementById("form_info");
@@ -32,11 +22,21 @@
                 if (res.data==true) {
                     var form_info = document.getElementById("form_hidden");
                     form_info.id.value = form.id.value;
-                    form_info.submit();
-                    // document.location.href='/modify';
+                    form_info.submit(); // submit메소드: form요소의 action속성에 지정된 주소로 value값 전송하는 메소드
                 } else { alert("로그인 실패!") };
             })
         }
     </script>
+</head>
+<body>
+    <h3>login</h3>
+    <form id="form_hidden" action="/modify" method="post">
+        <input type="hidden" name="id">
+    </form>
+    <form id="form_info">
+        ID <input type="text" name="id"><br>
+        PW <input type="password" name="pw"><br><br>
+        <button type="button" onclick="login();">로그인하기</button>
+    </form>
 </body>
 </html>

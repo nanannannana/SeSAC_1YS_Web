@@ -8,20 +8,33 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>회원가입</h3>
+    <h3>signup</h3>
     <form id="form_info">
         이름 <input type="text" name="name"><br>
-        ID <input type="text" name="id"><br>
+        ID <input type="text" name="id">
+        <button type="button" onclick="id_dupl()">ID 중복확인</button><br>
         PW <input type="password" name="pw"><br><br>
         <button type="button" onclick="signup();">가입하기</button>
         <button type="button" onclick="location.href='login'">로그인하기</button>
     </form>
     <script>
+        function id_dupl() {
+            var form = document.getElementById("form_info");
+            axios({
+                method: "post",
+                url: "/id_dupl",
+                data: { id: form.id.value }
+            })
+            .then(function(res){
+                if (res.data==false) alert('"'+`${form.id.value}`+'"'+" ID 사용 가능합니다.")
+                else alert('"'+`${form.id.value}`+'" 중복된 ID 입니다. 다른 ID를 사용해주세요.')
+            })
+        }
         function signup() {
             var form = document.getElementById("form_info");
             axios({
                 method: "post",
-                url: "/form",
+                url: "/signup",
                 data: {
                     name: form.name.value,
                     id: form.id.value,
@@ -29,7 +42,12 @@
                 }
             })
             .then(function(res){
-                alert(res.data.name+"님, 회원가입 완료!");
+                if (res.data==true) {
+                    alert("회원가입 완료!");
+                    location.href='/login';
+                } else {
+                    alert("ID를 변경하세요!");
+                }
             })
         }
     </script>

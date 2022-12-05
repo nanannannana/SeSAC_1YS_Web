@@ -3,12 +3,25 @@ const user = require("../model/User");
 exports.main = function(req,res) {
     res.render("index");
 }
-exports.form_ing = function(req,res) {
-    res.render("form");
+exports.signup_ing = function(req,res) {
+    res.render("signup");
 }
-exports.form_suc = function(req,res) {
-    user.form_suc(req.body,function() {
-        res.send(req.body);
+exports.id_dupl = function(req,res) {
+    user.id_dupl(req.body.id,function(rows){
+        var dupl_flag = true;
+        if (rows.length==0) dupl_flag=false;
+        res.send(dupl_flag);
+    })
+}
+exports.signup_suc = function(req,res) {
+    user.signup_suc(req.body, function(result) {
+        var signup_suc = false;
+        if (result=="duplicate") {
+            res.send(signup_suc);
+        } else {
+            signup_suc = true;
+            res.send(signup_suc);
+        }
     })
 }
 
@@ -32,4 +45,11 @@ exports.info_modify_suc = function(req,res) {
     user.info_modify_suc(req.body, function() {
         res.send(true);
     });
+}
+exports.info_del = function(req,res) {
+    user.info_del(req.body, function(result) {
+        del_flag=false;
+        if (result==1) del_falg = true;
+        res.send(del_flag);
+    })
 }
