@@ -22,8 +22,13 @@
                 if (res.data==true) {
                     var form_info = document.getElementById("form_hidden");
                     form_info.id.value = form.id.value;
-                    form_info.submit(); // submit메소드: form요소의 action속성에 지정된 주소로 value값 전송하는 메소드
-                } else { alert("로그인 실패!") };
+                    form_info.submit();
+                    // submit메소드: form요소의 action속성에 지정된 주소로 value값 전송하는 메소드
+                } else if(res.data==false) {
+                    alert("로그인 실패!");
+                } else {
+                    alert("id 또는 pw를 입력하세요!");
+                }
             })
         }
     </script>
@@ -34,8 +39,8 @@
         <input type="hidden" name="id">
     </form>
     <form id="form_info">
-        ID <input type="text" name="id"><br>
-        PW <input type="password" name="pw"><br><br>
+        ID <input type="text" name="id" placeholder="ID"><br>
+        PW <input type="password" name="pw" placeholder="PW"><br><br>
         <button type="button" onclick="login();">로그인하기</button>
     </form>
 </body>

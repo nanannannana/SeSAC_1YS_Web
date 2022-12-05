@@ -16,26 +16,37 @@ exports.id_dupl = function(req,res) {
 }
 exports.signup_suc = function(req,res) {
     const errors = validationResult(req);
-    user.signup_suc(req.body, function(result) {
-        var signup_suc = false;
-        if (result=="duplicate") {
-            res.send(signup_suc);
-        } else {
-            signup_suc = true;
-            res.send(signup_suc);
-        }
-    })
+    console.log(errors.errors);
+    if (errors.errors.length==0) {
+        user.signup_suc(req.body, function(result) {
+            var signup_suc = false;
+            if (result=="duplicate") {
+                res.send(signup_suc);
+            } else {
+                signup_suc = true;
+                res.send(signup_suc);
+            }
+        })
+    } else {
+        res.send(errors);
+    }
 }
 
 exports.login = function(req,res) {
     res.render("login");
 }
 exports.login_suc = function(req,res) {
-    user.login_suc(req.body ,function(rows) {
-        var login_flag = false;
-        if (rows.length>=1) login_flag = true
-        res.send(login_flag);
-    });
+    const errors = validationResult(req);
+    if (errors.errors.length==0) {
+        user.login_suc(req.body ,function(rows) {
+            var login_flag = false;
+            if (rows.length>=1) login_flag = true
+            res.send(login_flag);
+        })
+    } else {
+        res.send(errors);
+    }
+
 }
 
 exports.info_modify = function(req,res) {
@@ -44,9 +55,15 @@ exports.info_modify = function(req,res) {
     })
 }
 exports.info_modify_suc = function(req,res) {
-    user.info_modify_suc(req.body, function() {
-        res.send(true);
-    });
+    const errors = validationResult(req);
+    if (errors.errors.length==0) {
+        user.info_modify_suc(req.body, function() {
+            res.send(true);
+        })
+    } else {
+        res.send(errors);
+    }
+
 }
 exports.info_del = function(req,res) {
     user.info_del(req.body, function(result) {
