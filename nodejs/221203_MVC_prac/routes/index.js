@@ -1,6 +1,7 @@
 var express = require("express");
 var controller = require("../controller/Cuser");
 const router = express.Router();
+const { body } = require("express-validator");
 
 router.get("/", controller.main);
 router.get("/signup", controller.signup_ing);

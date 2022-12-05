@@ -1,4 +1,5 @@
 const user = require("../model/User");
+const { validationResult } = require("express-validator");
 
 exports.main = function(req,res) {
     res.render("index");
@@ -14,6 +15,7 @@ exports.id_dupl = function(req,res) {
     })
 }
 exports.signup_suc = function(req,res) {
+    const errors = validationResult(req);
     user.signup_suc(req.body, function(result) {
         var signup_suc = false;
         if (result=="duplicate") {
