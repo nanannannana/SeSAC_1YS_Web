@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <script>
+        function login() {
+            var form = document.getElementById("form_info");
+            axios({
+                method: "post",
+                url: "/user/login",
+                data: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                }
+            })
+            .then(function(res) {
+                // console.log(res);
+                if (res.data==true) {
+                    var form_info = document.getElementById("form_hidden");
+                    form_info.id.value = form.id.value;
+                    form_info.submit();
+                    // submit메소드: form요소의 action속성에 지정된 주소로 value값 전송하는 메소드
+                } else if(res.data==false) {
+                    alert("로그인 실패!");
+                } else {
+                    alert("id 또는 pw를 입력하세요!");
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <h3>login</h3>
+    <form id="form_hidden" action="/user/modify" method="post">
+        <input type="hidden" name="id">
+    </form>
+    <form id="form_info">
+        ID <input type="text" name="id" placeholder="ID"><br>
+        PW <input type="password" name="pw" placeholder="PW"><br><br>
+        <button type="button" onclick="login();">로그인하기</button>
+    </form>
+</body>
+</html>

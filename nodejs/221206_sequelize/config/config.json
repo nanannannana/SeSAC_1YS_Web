@@ -1,0 +1,16 @@
+{
+    "development": {
+        "host": "localhost",
+        "database": "데이터베이스",
+        "username": "user",
+        "password": "12123",
+        "dialect": "mysql"
+    },
+    "production": {
+        "host": "localhost",
+        "database": "데이터베이스",
+        "username": "user",
+        "password": "12123",
+        "dialect": "mysql"
+    }
+}

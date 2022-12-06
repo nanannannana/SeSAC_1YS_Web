@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <script>
+        function modify() {
+            var form = document.getElementById("form_info");
+            var info_data = {
+                id: form.id.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+            axios({
+                method: "patch",
+                url: "/user/modify_suc",
+                data: info_data
+            })
+            .then(function(res) {
+                if (res.data==true) {
+                    alert("회원정보 수정 완료!");
+                } else {
+                    alert("회원정보를 정확히 입력하세요!");
+                }
+            })
+        }
+        function info_del() {
+            var form = document.getElementById("form_info");
+            var info_data = {
+                id: form.id.value,
+                pw: form.pw.value,
+                name: form.name.value
+            }
+            axios({
+                method: "delete",
+                url: "/user/modify_del",
+                data: info_data
+            })
+            .then(function() {
+                alert("회원탈퇴 완료!");
+            })
+        }
+    </script>
+</head>
+<body>
+    <h3>profile</h3>
+    <form id="form_info">
+        ID <input type="text" name="id" value="<%=info.id%>" readonly><br>
+        PW <input type="password" value="<%=info.pw%>" name="pw" placeholder="8~16글자, 공백불가"><br>
+        이름 <input type="text" value="<%=info.name%>" name="name"><br><Br>
+        <button type="button" onclick="modify();">회원정보수정</button>
+        <button type="button" onclick="info_del();">회원탈퇴</button><br><br>
+        <button type="button" onclick="location.href='/user';">첫 페이지로</button>
+    </form>
+</body>
+</html>
