@@ -1,6 +1,5 @@
 const express = require("express");
 const session = require("express-session");
-const { userInfo } = require("os");
 const app = express();
 const port = 8000;
 
