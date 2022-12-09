@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
         comment: req.body.comment
     }
     let result = await Visitor.create(data);
-    console.log(result);
+    // console.log(result);
     res.send(String(result.id));
 
     // promise 객체 사용
