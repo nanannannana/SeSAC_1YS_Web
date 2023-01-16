@@ -1,12 +1,12 @@
 .App {
   text-align: center;
 }
-.App > div {
+/* .App > div {
   background-color: blue;
 }
 .App > div > div {
   color: red;
-}
+} */
 
 .App-logo {
   height: 40vmin;
