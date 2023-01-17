@@ -1,0 +1,12 @@
+div.component-root {
+  background-color: skyblue;
+}
+
+div.component-root h1 {
+  color: violet;
+}
+
+div.component-root span {
+  font-weight: 700;
+  text-decoration: line-through;
+}
