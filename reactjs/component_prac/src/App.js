@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-pascal-case */
 import './App.css';
 import Event_ex from './components/Event_ex';
 
