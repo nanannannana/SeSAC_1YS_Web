@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Hello World</h2>
+    <button onclick="btnSend('hello')">hello</button>
+    <button onclick="btnSend('study')">study</button>
+    <button onclick="btnSend('bye')">bye</button>
+    <script>
+      let socket = io.connect();
+      socket.on("connect", () => console.log("server connected"));
+
+      // 1-1) 함수 따로
+      // 함수를 실행하는 시점에 → 이벤트 등록
+      // 함수 밖에 이벤트 작성 → 함수 실행 전에도 이벤트 실행
+      //   const hello = () => socket.emit("hello", "hello");
+      //   socket.on("hello_res", (data) => console.log("hello:", data));
+      //   const study = () => {
+      //     socket.emit("study", "study");
+      //     socket.on("study_res", (data) => console.log("study:", data));
+      //   };
+
+      //   const bye = () => {
+      //     socket.emit("bye", "bye");
+      //     socket.on("bye_res", (data) => console.log("bye:", data));
+      //   };
+
+      // 1-2) 함수 한번에
+      const btnSend = (str) => socket.emit("send", str);
+      socket.on("response", (data) => console.log(data));
+    </script>
+  </body>
+</html>
