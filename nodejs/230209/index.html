@@ -39,13 +39,27 @@
       }
       .notice {
         text-align: center;
-        padding-top: 5px;
+        padding-top: 10px;
         font-size: 12px;
+        clear: both;
       }
       .me {
         width: auto;
         height: auto;
         background-color: rgb(255, 119, 119);
+        text-align: center;
+        padding: 5px 0px;
+        border-radius: 5%;
+        float: right;
+        display: block;
+        margin: 10px 10px 0 0;
+        padding: 5px 10px;
+        clear: both;
+      }
+      .me_dm {
+        width: auto;
+        height: auto;
+        background-color: rgb(254, 210, 210);
         text-align: center;
         padding: 5px 0px;
         border-radius: 5%;
@@ -63,6 +77,15 @@
         width: auto;
         height: auto;
         background-color: #dcdcdc;
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 5%;
+        display: inline-block;
+      }
+      .you_dm {
+        width: auto;
+        height: auto;
+        background-color: rgb(254, 210, 210);
         text-align: center;
         padding: 5px 10px;
         border-radius: 5%;
@@ -87,6 +110,7 @@
     <!-- 메세지 전송 영역 -->
     <div class="input-group input_msg">
       <select
+        id="members"
         class="form-select-sm rounded-0"
         style="border: 1px solid #dbdbdb"
       >
@@ -112,16 +136,88 @@
       </button>
     </div>
     <script>
+      // 채팅 사용자 닉네임 설정
+      const username = prompt("닉네임을 입력해주세요!");
+      // 채팅 div 변수 지정
+      const chat = document.getElementById("chat");
+
       // 소켓 연결
       let socket = io.connect();
-      let chat = document.getElementById("chat");
-      let notice = document.createElement("div");
-      // socket.on("connect", () => console.log("server connected"));
+      socket.on("connect", () => {
+        console.log("server connected");
+        // 소켓 연결 시, 서버에 채팅 사용자 닉네임 알림(전송)
+        socket.emit("username", username);
+      });
+
+      // server에서 소켓 아이디 받아옴
+      // my_id: server에서 받아온 socketID 저장
+      let my_id;
+      socket.on("info", (socketID) => (my_id = socketID));
+
+      // 채팅 입장 시, 입장 메세지(공지) 채팅창에 띄우는 설정
       socket.on("notice", (id) => {
+        const notice = document.createElement("div");
         notice.classList.add("notice");
-        notice.innerText = id;
+        notice.textContent = id;
         chat.appendChild(notice);
       });
+
+      // 메세지 입력 시, 작성한 메세지를 채팅장에 띄우는 설정
+      socket.on("newMsg", (json) => {
+        // json = {msg: 메세지, from: 메세지를 보낸 사람의 소켓 아이디, username: 메세지를 보낸 사람의 낙네임}
+        const msg_box = document.createElement("div");
+        const msg = document.createElement("div");
+        // 내 소켓 아이디와 json.from의 값이
+        // 1. 같은 경우, class='me' 지정
+        // 2. 다른 경우, class='you', class='you_msg' 지정
+        if (my_id === json.from) {
+          json.is_dm ? msg.classList.add("me_dm") : msg.classList.add("me");
+          msg.textContent = json.username + " : " + json.msg;
+          chat.appendChild(msg);
+        } else {
+          msg_box.classList.add("you");
+          json.is_dm
+            ? msg.classList.add("you_dm")
+            : msg.classList.add("you_msg");
+          msg.textContent = json.username + " : " + json.msg;
+          msg_box.appendChild(msg);
+          chat.appendChild(msg_box);
+        }
+      });
+
+      // 채팅방에 있는 사용자 list 서버에서 가져옴
+      socket.on("list", (list) => {
+        console.log(list);
+        const member_list = document.getElementById("members");
+        // select box option tag 전체 삭제
+        while (member_list.firstChild)
+          member_list.removeChild(member_list.lastChild);
+        const option = document.createElement("option");
+        // '전체' option 생성
+        option.text = "전체";
+        option.value = "전체";
+        member_list.appendChild(option);
+
+        // list의 key, value값을 배열로 2차원 배열화
+        // console.log(Object.entries(list));
+        for (let [k, v] of Object.entries(list)) {
+          // 각 배열을 돌면서 value값(=닉네임)을 option 태그로 만듦
+          const option = document.createElement("option");
+          option.text = v;
+          option.value = v;
+          // select(=member_list)에 추가
+          member_list.appendChild(option);
+        }
+      });
+
+      //button 클릭 시, 이벤트(작성한 메세지 서버 socket으로 전달)
+      const send = () => {
+        const input = document.getElementById("msg").value;
+        // 메세지를 누구한테 보낼 지 선택한 값: to = 선택된 닉네임
+        const to = document.getElementById("members").value;
+        socket.emit("send", { msg: input, to });
+        document.getElementById("msg").value = "";
+      };
 
       //enter 클릭 시, 메세지 전송
       var inputCk = document.getElementById("msg");
@@ -131,17 +227,6 @@
           document.getElementById("sendBtn").click();
         }
       });
-
-      //button 클릭 시, 이벤트
-      const send = () => {
-        let message = document.getElementById("msg").value;
-        let msg = document.createElement("div");
-        let node = document.createTextNode(message);
-        msg.classList.add("me");
-        msg.appendChild(node);
-        chat.appendChild(msg);
-        document.getElementById("msg").value = "";
-      };
     </script>
   </body>
 </html>
