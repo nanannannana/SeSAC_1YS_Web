@@ -22,15 +22,30 @@
     ></script>
     <title>Socket</title>
     <style>
+      @font-face {
+        font-family: "SUIT-Regular";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        font-family: "SUIT-Regular";
+      }
       .chat {
         width: 300px;
         height: 500px;
-        background-color: rgb(249, 105, 105);
+        background-color: #f4f4f4;
+      }
+      .notice {
+        text-align: center;
+        padding-top: 5px;
+        font-size: 12px;
       }
       .me {
         width: auto;
         height: auto;
-        background-color: white;
+        background-color: rgb(255, 119, 119);
         text-align: center;
         padding: 5px 0px;
         border-radius: 5%;
@@ -47,7 +62,7 @@
       .you_msg {
         width: auto;
         height: auto;
-        background-color: white;
+        background-color: #dcdcdc;
         text-align: center;
         padding: 5px 10px;
         border-radius: 5%;
@@ -56,26 +71,29 @@
       .input_msg {
         width: 300px;
       }
-      .btn {
-        outline-color: rgb(249, 105, 105);
-      }
-      .btn:hover {
-        background-color: rgb(249, 105, 105);
-      }
     </style>
   </head>
   <body>
     <!-- 채팅 영역 -->
     <div id="chat" class="chat">
-      <!-- 채팅 접속 알림
-      <div></div> -->
-      <div class="me">안녕</div>
+      <!-- 채팅 접속 알림 -->
+      <!-- <div class="notice">000님이 입장하였습니다.</div> -->
+      <!-- 채팅 메세지 -->
+      <!-- <div class="me">안녕</div>
       <div class="you">
         <div class="you_msg">반가워</div>
-      </div>
+      </div> -->
     </div>
     <!-- 메세지 전송 영역 -->
     <div class="input-group input_msg">
+      <select
+        class="form-select-sm rounded-0"
+        style="border: 1px solid #dbdbdb"
+      >
+        <option selected>전체</option>
+        <option value="홍길동">홍길동</option>
+        <option value="아무개">아무개</option>
+      </select>
       <input
         id="msg"
         type="text"
@@ -85,7 +103,7 @@
       />
       <button
         id="sendBtn"
-        class="btn btn btn-outline-danger rounded-0"
+        class="btn btn btn-outline-secondary rounded-0"
         type="button"
         id="button-addon2"
         onclick="send()"
@@ -96,7 +114,14 @@
     <script>
       // 소켓 연결
       let socket = io.connect();
-      socket.on("connect", () => console.log("server connected"));
+      let chat = document.getElementById("chat");
+      let notice = document.createElement("div");
+      // socket.on("connect", () => console.log("server connected"));
+      socket.on("notice", (id) => {
+        notice.classList.add("notice");
+        notice.innerText = id;
+        chat.appendChild(notice);
+      });
 
       //enter 클릭 시, 메세지 전송
       var inputCk = document.getElementById("msg");
@@ -109,10 +134,9 @@
 
       //button 클릭 시, 이벤트
       const send = () => {
-        var message = document.getElementById("msg").value;
-        var chat = document.getElementById("chat");
-        var msg = document.createElement("div");
-        var node = document.createTextNode(message);
+        let message = document.getElementById("msg").value;
+        let msg = document.createElement("div");
+        let node = document.createTextNode(message);
         msg.classList.add("me");
         msg.appendChild(node);
         chat.appendChild(msg);
