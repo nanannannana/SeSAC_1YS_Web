@@ -15,7 +15,6 @@ const SelectCss = styled(Select)`
 
 export default function Chatting({ socket }) {
   const username = useSelector((state) => state.chat.name);
-  //   const socketId = useSelector((state) => state.chat.id);
   const [socketId, setSocketId] = useState('');
   const [chatting, setChatting] = useState([]);
   // 서버에서 받은 값을 담는 state
@@ -26,22 +25,20 @@ export default function Chatting({ socket }) {
     socket.emit('username', username);
     socket.on('socketID', (id) => setSocketId(id));
     socket.on('notice', (data) => setRecentChat({ ...data, tag: 'notice' }));
-    if (socketId !== '')
-      socket.on('newMsg', (data) => {
-        console.log('메세지들', data);
-        data.from === socketId
-          ? setRecentChat({ ...data, tag: 'me' })
-          : setRecentChat({ ...data, tag: 'others' });
-      });
+
     return () => {
       socket.off('username');
       socket.off('notice');
     };
-  }, [socket, socketId]);
+  }, [socket]);
 
-  //   useEffect(() => {
-
-  //   },[socket,socketI])
+  useEffect(() => {
+    socket.on('newMsg', (data) => {
+      data.from === socketId
+        ? setRecentChat({ ...data, tag: 'me' })
+        : setRecentChat({ ...data, tag: 'others' });
+    });
+  }, [socketId]);
 
   useEffect(() => {
     Object.keys(recentChat).length > 0 &&
@@ -69,8 +66,10 @@ export default function Chatting({ socket }) {
               {v.msg}
             </div>
           ) : (
-            <div key={i} className={v.tag}>
-              {v.username}: {v.msg}
+            <div key={i} className="others_box">
+              <div className={v.tag}>
+                {v.username}: {v.msg}
+              </div>
             </div>
           )
         )}

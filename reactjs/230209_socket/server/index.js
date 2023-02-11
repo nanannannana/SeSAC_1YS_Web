@@ -24,12 +24,12 @@ io.on('connection', (socket) => {
       username: username,
       msg: '님이 입장하였습니다.',
     });
-    
+
     socket.on('sendMsg', (data) => {
       console.log(data);
       data['from'] = socket.id;
       data['username'] = users[socket.id];
-      socket.emit('newMsg', data);
+      io.emit('newMsg', data);
     });
   });
 });
