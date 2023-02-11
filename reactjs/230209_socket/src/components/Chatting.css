@@ -1,0 +1,32 @@
+.chat {
+  width: 300px;
+  height: 500px;
+  background-color: #f4f4f4;
+}
+
+.notice {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 12px;
+  clear: both;
+}
+.me {
+  float: right;
+  clear: both;
+  background-color: rgb(255, 119, 119);
+  padding: 5px 10px;
+  margin: 10px 10px 0 0;
+  text-align: center;
+  border-radius: 5%;
+}
+.others {
+  display: inline-block;
+  background-color: #dcdcdc;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 5%;
+}
+.others_box {
+  clear: both;
+  padding: 10px 0 0 10px;
+}

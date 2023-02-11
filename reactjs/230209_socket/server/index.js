@@ -11,9 +11,27 @@ const io = require('socket.io')(http, {
 
 app.use(cors());
 
+let users = {};
 io.on('connection', (socket) => {
   console.log('server open' + socket.id);
-  socket.on('username', (username) => console.log(username));
+  socket.emit('socketID', socket.id);
+
+  socket.on('username', (username) => {
+    users[socket.id] = username;
+
+    io.emit('users', users);
+    io.emit('notice', {
+      username: username,
+      msg: '님이 입장하였습니다.',
+    });
+    
+    socket.on('sendMsg', (data) => {
+      console.log(data);
+      data['from'] = socket.id;
+      data['username'] = users[socket.id];
+      socket.emit('newMsg', data);
+    });
+  });
 });
 
 http.listen(4000, () => console.log('4000 server running'));
