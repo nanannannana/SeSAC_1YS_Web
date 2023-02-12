@@ -13,6 +13,7 @@ app.use(cors());
 
 let users = {};
 io.on('connection', (socket) => {
+  // 채팅방 입장
   console.log('server open' + socket.id);
   socket.emit('socketID', socket.id);
 
@@ -29,8 +30,27 @@ io.on('connection', (socket) => {
       console.log(data);
       data['from'] = socket.id;
       data['username'] = users[socket.id];
-      io.emit('newMsg', data);
+      data['isDm'] = false;
+
+      if (data.to === '전체') {
+        io.emit('newMsg', data);
+      } else {
+        data['isDm'] = true;
+        const socketID = Object.keys(users).find((id) => users[id] === data.to);
+        io.to(socketID).emit('newMsg', data);
+        socket.emit('newMsg', data);
+      }
     });
+  });
+
+  // 채팅방 퇴장
+  socket.on('disconnect', () => {
+    io.emit('notice', {
+      username: users[socket.id],
+      msg: '님이 퇴장하였습니다.',
+    });
+    delete users[socket.id];
+    io.emit('users', users);
   });
 });
 
