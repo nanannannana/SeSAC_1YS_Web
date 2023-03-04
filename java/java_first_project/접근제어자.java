@@ -34,7 +34,9 @@ public class 접근제어자 {
 					System.out.println("세로길이: "+rect.get(i).getHeight());
 					System.out.println("넓이는: "+(rect.get(i).getWidth()*rect.get(i).getHeight()));
 					System.out.println("----------");
+					Rectangle.count++;
 				}
+				System.out.println("인스턴스: "+Rectangle.count);
 				break;
 			}
 		}

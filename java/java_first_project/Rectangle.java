@@ -3,6 +3,7 @@ package java_first_project;
 public class Rectangle {
 	private int width;
 	private int height;
+	public static int count;
 	
 	public Rectangle(int width) {
 		this.width = width;
