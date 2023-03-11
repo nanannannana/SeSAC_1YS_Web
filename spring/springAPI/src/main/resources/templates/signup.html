@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const sendForm = () => {
+            var form = document.getElementById("signup_form");
+            axios.post(`/signup`, {id: form.id.value, pw: form.pw.value, name: form.name.value})
+            .then((res) => {
+                alert(res.data);
+                location.href = '/login';
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form id="signup_form">
+        아이디 : <input type="text" name="id">
+        <br>
+        비밀번호 : <input type="password" name="pw">
+        <br>
+        이름 : <input type="text" name="name">
+        <br>
+        <button type="button" onclick="sendForm();">전송</button>
+    </form>
+</body>
+</html>

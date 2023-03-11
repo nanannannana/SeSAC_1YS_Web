@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const login () => {
+            var form = document.getElementById("login_form");
+            axios.post(`/loginSubmit`, {id: form.id.value, pw: form.pw.value})
+            .then((res) => {
+                res.data == 'true' ? location.href="/update" : alert("다시 입력하세요.);
+            })
+        }
+    </script>
+</head>
+<body>
+    <h1>로그인</h1>
+    <form id="login_form">
+        id: <input type="text" value="id">
+        pw: <input type="password" value="pw">
+        <button type="button" onclick="login()">로그인</button>
+    </form>
+</body>
+</html>
