@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sesac.mybatis.mapper.MainMapper">
+<!--     id명은 mapper의 함수명과 동일해야 함-->
+<!--     resultType의 값은 MainMapper 함수의 타입값과 동일해야 함-->
+    <select id="retrieveAll" resultType="sesac.mybatis.domain.User">
+        SELECT user.* FROM user
+    </select>
+</mapper>

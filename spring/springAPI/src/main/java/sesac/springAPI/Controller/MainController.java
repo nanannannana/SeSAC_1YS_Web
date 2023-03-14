@@ -8,6 +8,8 @@ import sesac.springAPI.DTO.UserFormDTO;
 import sesac.springAPI.VO.UserFormVO;
 import sesac.springAPI.VO.UserVO;
 
+import java.util.Objects;
+
 @Controller
 public class MainController {
     //get 방식
@@ -228,12 +230,28 @@ public class MainController {
     }
     @PostMapping("/signup")
     @ResponseBody
-    public String signupSubmit(@RequestBody UserVO userVO) {
-        String msg = userVO.getName()+"님 회원가입을 환영합니다.";
+    public String signupSubmit(@RequestBody UserFormVO userFormVO) {
+        String msg = userFormVO.getName()+"님 회원가입을 환영합니다.";
         return msg;
     }
     @GetMapping("/login")
     public String login() {
         return "login";
     }
+//    @PostMapping("/login")
+//    public String loginSubmit(@RequestBody UserFormDTO userFormDTO) {
+//        UserFormVO userInfo = new UserFormVO();
+//        String msg = userFormDTO.getId()+userInfo.getId();
+////        if (Objects.equals(userFormDTO.getId(), userInfo.getId()) && Objects.equals(userFormDTO.getPw(), userInfo.getPw())) {
+////            msg = "로그인 성공";
+////        } else {
+////            msg = "로그인 실패";
+////        }
+//        return msg;
+//    }
+//
+//    @GetMapping("/update")
+//    public String update() {
+//        return "update";
+//    }
 }
