@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h5>users</h5>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>ID</th>
+            <th>이름</th>
+            <th>닉네임</th>
+        </tr>
+        <tr th:each="user:${list}">
+            <td th:text="${user.getNo()}">번호</td>
+            <td th:text="${user.getId()}">ID</td>
+            <td th:text="${user.getName()}">이름</td>
+            <td th:text="${user.getNickname()}">닉네임</td>
+        </tr>
+    </table>
+</body>
+</html>

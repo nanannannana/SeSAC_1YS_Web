@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sesac.mybatis.domain.User;
+import sesac.mybatis.domain.UserEntity;
 import sesac.mybatis.dto.UserDTO;
 import sesac.mybatis.service.MainService;
 
@@ -27,13 +28,21 @@ public class MainController {
 
     @GetMapping("user/insert")
     public String getInsertUser(@RequestParam String name, @RequestParam String nickname, Model model) {
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setName(name);
         user.setNickname(nickname);
 
         mainService.addUser(user);
 
         model.addAttribute("list", null);
+        return "user";
+    }
+
+    @GetMapping("/user")
+    public String getUser(@RequestParam String name, Model model) {
+        ArrayList<UserDTO> userList = mainService.getUserName(name);
+
+        model.addAttribute("list", userList);
         return "user";
     }
 }

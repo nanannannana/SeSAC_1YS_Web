@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const login = () => {
+            var form = document.getElementById("form_login");
+            var data = {
+                id: form.id.value,
+                pw: form.pw.value,
+            };
+            axios.post(`/person/login`, data)
+            .then((res) => {
+                if (res.data) {
+                    alert("로그인 성공!");
+<!--                    내가 선택한 form에 action, method 속성 추가-->
+<!--                    즉, form_login의 action, method 속성 아래 값으로 변경 및 기존 데이터(id, pw) 같이 전송-->
+                    form.action = "/person/info";
+                    form.method = "post";
+                    form.submit();
+                } else {
+                    alert("로그인 실패!");
+                    form.reset();
+                }
+            });
+        }
+        function go_register() {
+            document.location.href = "/person/register";
+        }
+    </script>
+</head>
+<body>
+    <form id="form_login">
+        <input type="text" placeholder="id" name="id">
+        <input type="password" placeholder="pw" name="pw">
+        <button type="button" onclick="login();">로그인</button>
+        <button type="button" onclick="go_register();">회원가입</button>
+    </form>
+</body>
+</html>
