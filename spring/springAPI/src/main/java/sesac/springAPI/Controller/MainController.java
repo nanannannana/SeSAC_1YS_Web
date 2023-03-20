@@ -230,28 +230,51 @@ public class MainController {
     }
     @PostMapping("/signup")
     @ResponseBody
-    public String signupSubmit(@RequestBody UserFormVO userFormVO) {
-        String msg = userFormVO.getName()+"님 회원가입을 환영합니다.";
+    public String signupSubmit(@RequestBody UserFormDTO userFormDTO) {
+        String msg = userFormDTO.getName()+"님 회원가입을 환영합니다.";
         return msg;
     }
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-//    @PostMapping("/login")
-//    public String loginSubmit(@RequestBody UserFormDTO userFormDTO) {
-//        UserFormVO userInfo = new UserFormVO();
-//        String msg = userFormDTO.getId()+userInfo.getId();
-////        if (Objects.equals(userFormDTO.getId(), userInfo.getId()) && Objects.equals(userFormDTO.getPw(), userInfo.getPw())) {
-////            msg = "로그인 성공";
-////        } else {
-////            msg = "로그인 실패";
-////        }
-//        return msg;
-//    }
-//
-//    @GetMapping("/update")
-//    public String update() {
-//        return "update";
-//    }
+    @PostMapping("/login")
+    @ResponseBody
+    public String loginSubmit(@RequestBody UserFormDTO userFormDTO) {
+        UserFormVO userInfo = new UserFormVO();
+        String msg;
+        if(userInfo.getId().equals(userFormDTO.getId()) && userInfo.getPw().equals(userFormDTO.getPw())) msg="success";
+        else msg="fail";
+        return msg;
+    }
+
+    @GetMapping("/my-info")
+    public String my_info(Model model) {
+        UserFormVO userInfo = new UserFormVO();
+        model.addAttribute("id", userInfo.getId());
+        model.addAttribute("pw", userInfo.getPw());
+        model.addAttribute("name", userInfo.getName());
+        return "my-info";
+    }
+
+    @PatchMapping("/my-info")
+    @ResponseBody
+    public String patchInfo(@RequestBody UserFormDTO userFormDTO, Model model) {
+        model.addAttribute("id", userFormDTO.getId());
+        model.addAttribute("pw", userFormDTO.getPw());
+        model.addAttribute("name", userFormDTO.getName());
+        return "change";
+    }
+
+    @DeleteMapping("/my-info")
+    @ResponseBody
+    public String deleteInfo(@RequestBody UserFormDTO userFormDTO) {
+        UserFormVO userInfo = new UserFormVO();
+        if(userInfo.getId().equals(userFormDTO.getId())) {
+            userFormDTO.setId("");
+            userFormDTO.setPw("");
+            userFormDTO.setName("");
+        }
+        return "success";
+    }
 }
