@@ -16,6 +16,7 @@ public class MainService {
 
     //1. CREATE
     public void addUser(UserEntity user) {
+        // id값이 없으면 새롭게 생성(insert)
         userRepository.save(user);
     }
 
@@ -37,10 +38,11 @@ public class MainService {
 
     //3. Update
     public void updateUser(UserEntity user) {
+        // id값이 존재하면 그 id값으로 덮어쓰기
         userRepository.save(user);
     }
 
-    public void DeleteUser(UserEntity user) {
-        userRepository.delete(user);
+    public void DeleteUser(int id) {
+        userRepository.deleteById(id);
     }
 }

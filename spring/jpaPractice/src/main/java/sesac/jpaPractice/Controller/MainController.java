@@ -54,7 +54,8 @@ public class MainController {
         user.setName(name);
         user.setNickname(nickname);
 
-        mainService.DeleteUser(user);
+        // id값 보내기
+        mainService.DeleteUser(0);
 
         model.addAttribute("list", null);
         return "user";

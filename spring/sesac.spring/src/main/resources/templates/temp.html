@@ -8,9 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 th:text="${msg}">HiiHi</h1>
-    <br>
-    <p th:utext="${utext}">p태그</p>
-    <span th:with="msg2='안녕? ' +${msg}" th:text="${msg2}"></span>
+    <ul>
+        <li th:each="name:${names}">
+            <span th:text="${name}">name</span>
+        </li>
+    </ul>
 </body>
 </html>

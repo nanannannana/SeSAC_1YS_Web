@@ -9,10 +9,17 @@ import java.util.ArrayList;
 public class HelloController {
     @GetMapping("/hi") // = app.get
     public String getHi(Model model) {
-        model.addAttribute("msg", "메세지입니다!");
-        model.addAttribute("utext", "<strong>utext입니다.</string>");
+        model.addAttribute("msg", "Hello");
+        model.addAttribute("utext", "<strong>utext입니다.</strong>");
         return "hi"; // = res.render("hi"), 리턴값 view파일로 인식
     };
+
+    @GetMapping("/temp")
+    public String temp(Model model) {
+        String[] names = {"kim","lee","hong","seo"};
+        model.addAttribute("names", names);
+        return "temp";
+    }
 
     @GetMapping("/practice1")
     public String getPractice(Model model) {
