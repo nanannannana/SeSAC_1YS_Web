@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function infoUpdate() {
+            let form = document.getElementById("form_info");
+            let data = {
+                id: form.id.value,
+                pw: form.pw.value,
+                name: form.name.value,
+            }
+            axios.patch(`/my-info`, data)
+            .then((res) => res.data == "change" && alert("회원 정보가 수정되었습니다."));
+        };
+        function infoDel() {
+            let form = document.getElementById("form_info");
+            axios.delete(`/my-info`,{data: {id: form.id.value}})
+            .then(() => {
+                alert("탈퇴 성공");
+                document.location.href="/welcome";
+            });
+        };
+    </script>
+</head>
+<body>
+    <h1>마이페이지</h1>
+    <form id="form_info">
+        ID: <input type="text" name="id" th:value="${id}" readonly>
+        <br>
+        PW: <input type="password" name="pw" th:value="${pw}">
+        <br>
+        NAME: <input type="text" name="name" th:value="${name}">
+    </form>
+    <button type="button" onclick="infoUpdate();">수정하기</button>
+    <button type="button" onclick="infoDel();">탈퇴하기</button>
+</body>
+</html>
