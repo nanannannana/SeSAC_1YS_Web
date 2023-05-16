@@ -3,20 +3,20 @@
 <br>
 
 <div align="center">
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/> 
-<img src="https://img.shields.io/badge/Express-000000?style=flat-square&logo=Express&logoColor=white"/>
-<img src="https://img.shields.io/badge/Sequelize-52B0E7?style=flat-square&logo=Sequelize&logoColor=white"/>
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=white"/>  
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
-<img src="https://img.shields.io/badge/NCP-03C75A?style=flat-square&logo=Naver&logoColor=white"/> 
-<img src="https://img.shields.io/badge/AWS-FF9900?style=flat-square&logo=Amazon EC2&logoColor=white"/>
-<br>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
-<img src="https://img.shields.io/badge/jQuery-0769AD?style=flat-square&logo=jQuery&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/> 
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
-<img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"/> 
+    <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=Express&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/>  
+    <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"/>
+    <img src="https://img.shields.io/badge/NCP-03C75A?style=for-the-badge&logo=Naver&logoColor=white"/> 
+    <img src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"/>
+    <br>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/>
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/>
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black"/> 
+    <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white"/>
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"/>
+    <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
 </div>
 
 <br>
@@ -68,7 +68,7 @@
 
 ### ❖ 2023.02.11 ~ 02.25: 3차 팀프로젝트
 
-### ❖ 2023.02.28 ~ 03.16: Java, Spring, Mybatis, JPA
+### ❖ 2023.02.28 ~ 03.16: Java, Spring Boot, Mybatis, JPA
 |제목|주소|
 |:---:|---|
 |**Java 기초 문법**|<a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%EC%8A%A4%EC%BA%90%EB%84%88.java">Scanner</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%EC%A1%B0%EA%B1%B4%EB%AC%B8%EC%8B%A4%EC%8A%B5.java">조건문(if, switch-case), 반복문(for)</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%EC%A1%B0%EA%B1%B4%EB%AC%B8.java">반복문(while, do-while)</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%EB%A9%94%EC%84%9C%EB%93%9C%EC%8B%A4%EC%8A%B5.java">메서드</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/Array%EC%8B%A4%EC%8A%B5.java">Array, ArrayList</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.java">예외 처리</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%ED%81%B4%EB%9E%98%EC%8A%A4.java">Class</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/blob/main/java/java_first_project/%EC%A0%91%EA%B7%BC%EC%A0%9C%EC%96%B4%EC%9E%90.java">접근제어자</a> <br> <a href="https://github.com/nanannannana/SeSAC_1YS_Web/tree/main/java/java_0304">클래스 상속</a> <br> <span>추상클래스, 인터페이스</span>|
